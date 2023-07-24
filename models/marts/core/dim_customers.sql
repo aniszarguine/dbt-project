@@ -27,3 +27,8 @@ final as (
     left join customer_orders using (customer_id)
 )
 select * from final
+------------------TEST DE DEPLOIEMENT EN PRD --------------
+    {% if target.name == 'prd' %}
+     where NUMBER_OF_ORDERS>'1'
+    {% endif %}
+------------------FIN DE TEST ------------------------------
