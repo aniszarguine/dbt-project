@@ -39,6 +39,7 @@ models:
       
     marts:
       core:
+        +tags: core
         +materialized: table
         +database: analytics_{{target.name}}
         +schema: 'dbt_{{target.name}}'
