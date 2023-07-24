@@ -40,12 +40,12 @@ models:
     marts:
       core:
         +materialized: table
+        +database: analytics_{{target.name}}
+        +schema: 'dbt_{{target.name}}'
     
     staging:
       +materialized: view
-      +database: |
-        {%- if  target.name == 'dev' -%} ANALYTICS
-        {%- elif target.name == 'prd'  -%} ANALYTICS_PRD
-        {%- endif -%}
+      +database: analytics_{{target.name}}
       +schema: 'dbt_{{target.name}}'
+    
     
