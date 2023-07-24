@@ -58,4 +58,14 @@ models:
     description: Table who contains informations of payments
     columns:
       - name: PAYMENT_ID
-        description: PK FOR MY TABLE 
+        description: Primary Key for the Payments table
+      - name: ORDER_ID
+        description: References for the ID from the Orders Table 
+      - name: PAYMENT_METHOD
+        description: Type of the paymets, a list of choice
+      - name: STATUS
+        description: Status of the transaction 
+      - name: AMOUNT
+        description: Total Amounts of the transaction
+      - name: CREATED_AT
+        description: Technical column that contains the etl RAW loaddate 
