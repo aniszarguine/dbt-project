@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Customers contains informations of my compagny CRM
+    columns:
+      - name: customer_id 
+        description: Primary key for the customer table
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: nom de mon client    
+
+      - name: last_name
+        description: prenom de mon client 
+
+  - name: modulo
+    columns:
+      - name: champ 
+        tests:
+          - is_even:
+              config:
+                severity: error
+                error_if: "<50"
+                warn_if: ">70"
+          
+
+  - name: stg_orders
+    description: All my customers orders are stocked in this table
+    columns:
+      - name: order_id
+        description: Primary key for the order table
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: '{{ doc("order_status") }}'
+        tests:
+          - unique:
+              config:
+                severity: error
+                error_if: ">4"
+                warn_if: ">3"
+          - accepted_values:
+              values:
+                - shipped
+                - completed
+                - return_pending
+                - returned
+                - placed
+      
+
+
+
+
+  - name: stg_payments
+    description: Table who contains informations of payments
+    columns:
+      - name: PAYMENT_ID
+        description: PK FOR MY TABLE 
