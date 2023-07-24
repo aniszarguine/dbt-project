@@ -9,7 +9,7 @@ with orders as (
     from {{source('jaffle_shop','orders')}}
 
 ------------------TEST DE DEPLOIEMENT EN PRD --------------
-    {% if target.name == 'dev' %}
+    {% if target.name == 'prd' %}
      where status='completed'
     {% endif %}
 ------------------FIN DE TEST ------------------------------
