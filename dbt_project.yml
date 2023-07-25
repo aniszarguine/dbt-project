@@ -47,6 +47,6 @@ models:
     staging:
       +materialized: view
       +database: analytics_{{target.name}}
-      +schema: 'dbt_stg_cours_{{target.name}}'
+      +schema: 'dbt_stg_{{target.name}}'
     
     
