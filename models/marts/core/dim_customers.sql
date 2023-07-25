@@ -1,3 +1,18 @@
+
+/*
+Description : 
+-------------------------------------------------------------------------------------
+Author      : Talan
+Version     : 1.0
+Created     : 20210125_1623
+RequestId   : JIRA
+------------------------------------------------------------------------------------
+Modified    : 24/07/2023
+By          : AMAI
+RequestId   : Mettre le Ticket de la JIRA
+Comment     : Premier model de la DIM_CUSTOMER
+*/
+
 {{ config(
   enabled=true
 ) }}
@@ -31,11 +46,12 @@ final as (
     left join customer_orders using (customer_id)
 )
 select * from final
-------------------TEST DE DEPLOIEMENT EN PRD/UAT --------------
+------------------TEST DE DEPLOIEMENT EN PRD/UAT AMAI le 25/07/2023  --------------
     {% if target.name == 'prd' %}
      where NUMBER_OF_ORDERS>'1'
-
+    
     {% elif target.name == 'uat' %}
-     WHERE NUMBER_OF_ORDERS = '3'
+     where  LIFETIME_VALUE > 33
+
     {% endif %}
-------------------FIN DE TEST ------------------------------
+------------------FIN DE TEST ------------------------------------------------------
