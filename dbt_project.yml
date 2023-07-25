@@ -42,11 +42,11 @@ models:
         +tags: core
         +materialized: table
         +database: analytics_{{target.name}}
-        +schema: 'dbt_{{target.name}}'
+        +schema: 'dbt_mart_{{target.name}}'
     
     staging:
       +materialized: view
       +database: analytics_{{target.name}}
-      +schema: 'dbt_{{target.name}}'
+      +schema: 'dbt_stg_{{target.name}}'
     
     
