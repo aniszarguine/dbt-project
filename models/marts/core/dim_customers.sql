@@ -49,9 +49,6 @@ select * from final
 ------------------TEST DE DEPLOIEMENT EN PRD/UAT AMAI le 25/07/2023  --------------
     {% if target.name == 'prd' %}
      where NUMBER_OF_ORDERS>'1'
-    
-    {% elif target.name == 'uat' %}
-     where  LIFETIME_VALUE > 33
 
     {% endif %}
 ------------------FIN DE TEST ------------------------------------------------------
