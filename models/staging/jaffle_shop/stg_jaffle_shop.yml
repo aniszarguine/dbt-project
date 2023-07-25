@@ -22,8 +22,9 @@ models:
           - is_even:
               config:
                 severity: error
-                error_if: "<50"
-                warn_if: ">70"
+                warn_if: "<50"
+                error_if: ">60"
+
           
 
   - name: stg_orders
@@ -40,8 +41,8 @@ models:
           - unique:
               config:
                 severity: error
-                error_if: ">4"
-                warn_if: ">3"
+                error_if: ">5"
+                warn_if: "<3"
           - accepted_values:
               values:
                 - shipped

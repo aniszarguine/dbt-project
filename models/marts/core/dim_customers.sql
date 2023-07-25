@@ -1,3 +1,7 @@
+{{ config(
+  enabled=true
+) }}
+
 with customers as (
     select * from {{ ref('stg_customers')}}
 ),
@@ -27,8 +31,11 @@ final as (
     left join customer_orders using (customer_id)
 )
 select * from final
-------------------TEST DE DEPLOIEMENT EN PRD --------------
+------------------TEST DE DEPLOIEMENT EN PRD/UAT --------------
     {% if target.name == 'prd' %}
      where NUMBER_OF_ORDERS>'1'
+
+    {% elif target.name == 'uat' %}
+     WHERE NUMBER_OF_ORDERS = '3'
     {% endif %}
 ------------------FIN DE TEST ------------------------------
